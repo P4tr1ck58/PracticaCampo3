@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ejercicio3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             *  Ejercicio 3 – Facturación con beneficios según perfil del paciente Por cada cliente:
+             *   Nombre
+             *   Edad
+             *   Afiliado (sí/no)
+             *   Monto de compra
+             *  Descuentos:
+             *   25% si es afiliado y > 65 años
+             *   15% si solo es afiliado
+             *   10% si solo es > 65
+             *   0% si no cumple
+             *  Mostrar:
+             *   Total pagado por cada cliente
+             *   Total vendido, total de descuentos, número de clientes
+             */
+            Console.WriteLine("Facturacion");
+            Console.Write("Ingrese el número de clientes: ");
+            int clientes = int.Parse(Console.ReadLine());
+            string nombre,afiliado;
+            int edad;
+            double montoCompra, totalVendido = 0, totalDescuentos = 1, descuento = 0.00, saldofinal = 0;
+
+            for (int i = 1; i <= clientes; i++)
+            {
+                Console.Write("\nNombre:");
+                nombre = Console.ReadLine();
+                Console.Write("Edad:");
+                edad = int.Parse(Console.ReadLine());
+                Console.Write("Afiliado (Si/No):");
+                afiliado = Console.ReadLine();
+                Console.Write("Monto de compra:");
+                montoCompra = double.Parse(Console.ReadLine());
+
+                if (afiliado == "Si" || afiliado == "No")
+                {
+                    if (afiliado == "Si" && edad >  65)
+                    {
+                        descuento = 0.25;
+                        saldofinal = montoCompra - (montoCompra * descuento);
+                    }
+                    else if (afiliado == "Si")
+                    {
+                        descuento = 0.15;
+                        saldofinal = montoCompra - (montoCompra * descuento);
+                    }
+                    else if (edad > 65)
+                    {
+                        descuento = 0.10;
+                        saldofinal = montoCompra - (montoCompra * descuento);
+                    }
+                    else
+                    {
+                        saldofinal = montoCompra;
+                    }
+                    totalVendido += saldofinal;
+                    totalDescuentos += descuento ;
+                }
+                else
+                {
+                    Console.WriteLine("Error, ingrese Si o No ");
+                }
+
+                Console.WriteLine("\n---------------------------");
+                Console.WriteLine("Nombre: " + nombre);
+                Console.WriteLine("Total pagado: " + saldofinal);
+                Console.WriteLine("Descuento: " + (descuento * 100) +  "%");
+            }
+            Console.WriteLine("\n---------------------------");
+            Console.WriteLine("Numero de Clientes: " + clientes);
+            Console.WriteLine("Total vendido: " + totalVendido);    
+            Console.WriteLine("Total de descuentos: " + totalDescuentos);
+        }
+    }
+}

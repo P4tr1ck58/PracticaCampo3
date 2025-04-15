@@ -1,0 +1,94 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ejercicio2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             *  Ejercicio 2 – Simulador de atención por prioridad en una clínica Menú:
+             *  1. Ingresar nuevo paciente
+             *  2. Atender siguiente paciente
+             *  3. Ver cola de espera
+             *  4. Salir
+             *  Reglas:
+             *   Cada paciente tiene nombre, edad y tipo de atención (urgente o regular)
+             *   Los pacientes urgentes se atienden antes
+             *   Mostrar cada operación realizada
+             */
+            string nombre, tipoAtencion;
+            int opcion, edad;
+            Console.WriteLine("Prioridad de Paciente");
+            Console.Write("Desea ingresar pacientes? si/no: ");
+            string paciente = Console.ReadLine();
+            bool menu = true;
+            if (paciente.ToLower() == "si")
+            {
+                for (; menu;)
+                {
+                    Console.WriteLine("\n------------------------------------------");
+                    Console.WriteLine("-----------------  Menu  -----------------");
+                    Console.WriteLine("---- 1. Ingresar nuevo paciente       ----");
+                    Console.WriteLine("---- 2. Atender siguiente paciente    ----");
+                    Console.WriteLine("---- 3. Ver cola de espera            ----");
+                    Console.WriteLine("---- 4. Salir                         ----");
+                    Console.WriteLine("------------------------------------------");
+                    Console.Write("\nIngrese una opción: ");
+                    opcion = int.Parse(Console.ReadLine());
+
+                    switch (opcion)
+                    {
+                        case 1:
+                            Console.WriteLine("\n--------------------------------");
+                            Console.Write("Ingrese el nombre del paciente: ");
+                            nombre = Console.ReadLine();
+                            Console.Write("Ingrese la edad del paciente: ");
+                            edad = int.Parse(Console.ReadLine());
+                            Console.Write("Ingrese el tipo de atención (urgente/regular): ");
+                            tipoAtencion = Console.ReadLine();
+                            Console.WriteLine($"Paciente ingresado: {nombre}, Edad: {edad}, Tipo de atención: {tipoAtencion}");
+                            break;
+
+                        case 2:
+                            Console.WriteLine("\n--------------------------------");
+                            Console.WriteLine("Atendiendo siguiente paciente...");
+                            // Aquí se puede agregar la lógica para atender al siguiente paciente
+                            break;
+
+                        case 3:
+                            Console.WriteLine("\n--------------------------------");
+                            Console.WriteLine("Cola de espera:");
+                            // Aquí se puede agregar la lógica para mostrar la cola de espera
+                            break;
+
+                        case 4:
+                            Console.WriteLine("\n--------------------------------");
+                            Console.WriteLine("Saliendo del programa...");
+                            menu = false;
+                            break;
+
+                        default:
+                            Console.WriteLine("Opcion no valida");
+                            break;
+                    }
+                }
+            }
+            else if (paciente.ToLower() == "no")
+            {
+                Console.WriteLine("Saliendo del programa...");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Opcion no valida, escriba si o no");
+            }
+            
+        
+        }
+    }
+}
