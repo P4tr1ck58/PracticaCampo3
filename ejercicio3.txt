@@ -29,8 +29,8 @@ namespace Ejercicio3
             Console.Write("Ingrese el número de clientes: ");
             int clientes = int.Parse(Console.ReadLine());
             string nombre,afiliado;
-            int edad;
-            double montoCompra, totalVendido = 0, totalDescuentos = 1, descuento = 0.00, saldofinal = 0;
+            int edad, totalDescuentos = 0;
+            double montoCompra, totalVendido = 0, totalDescuentos1 = 0, descuento = 0.00, saldofinal = 0;
 
             for (int i = 1; i <= clientes; i++)
             {
@@ -42,6 +42,7 @@ namespace Ejercicio3
                 afiliado = Console.ReadLine();
                 Console.Write("Monto de compra:");
                 montoCompra = double.Parse(Console.ReadLine());
+                descuento = 0;
 
                 if (afiliado == "Si" || afiliado == "No")
                 {
@@ -60,12 +61,16 @@ namespace Ejercicio3
                         descuento = 0.10;
                         saldofinal = montoCompra - (montoCompra * descuento);
                     }
+                    if (descuento > 0)
+                    {
+                        totalDescuentos++;
+                    }
                     else
                     {
                         saldofinal = montoCompra;
                     }
                     totalVendido += saldofinal;
-                    totalDescuentos += descuento ;
+                    totalDescuentos1 += (descuento *100);
                 }
                 else
                 {
@@ -80,7 +85,8 @@ namespace Ejercicio3
             Console.WriteLine("\n---------------------------");
             Console.WriteLine("Numero de Clientes: " + clientes);
             Console.WriteLine("Total vendido: " + totalVendido);    
-            Console.WriteLine("Total de descuentos: " + totalDescuentos);
+            Console.WriteLine("Numero de descuentos: " + totalDescuentos);
+            Console.WriteLine("Total de descuentos: " + totalDescuentos1 + "%");
         }
     }
 }

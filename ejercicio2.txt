@@ -56,14 +56,12 @@ namespace Ejercicio2
 
                         case 2:
                             Console.WriteLine("\n--------------------------------");
-                            Console.WriteLine("Atendiendo siguiente paciente...");
-                            // Aquí se puede agregar la lógica para atender al siguiente paciente
+                            Console.WriteLine("Atendiendo siguiente paciente..."); 
                             break;
 
                         case 3:
                             Console.WriteLine("\n--------------------------------");
                             Console.WriteLine("Cola de espera:");
-                            // Aquí se puede agregar la lógica para mostrar la cola de espera
                             break;
 
                         case 4:
